@@ -1,0 +1,1 @@
+Coding exercises for Norris Wise
