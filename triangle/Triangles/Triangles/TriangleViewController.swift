@@ -65,6 +65,11 @@ class TriangleViewController: UIViewController, UITextFieldDelegate
     func textFieldDidBeginEditing(textField: UITextField)
     {
         textField.becomeFirstResponder()
+        
+        if textField.text!.isEmpty
+        {
+            resultsLabel.text = ""
+        }
     }
     func textFieldDidEndEditing(textField: UITextField)
     {
