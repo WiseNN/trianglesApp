@@ -8,49 +8,70 @@
 
 import UIKit
 
-class TriangleViewController: UIViewController {
+enum TextFieldError:ErrorType {
+    case EnterValidInput
+    
+}
 
-    override func viewDidLoad() {
+class TriangleViewController: UIViewController, UITextFieldDelegate
+{
+    
+    //UI Objects
+    @IBOutlet weak var side1TextField: UITextField!
+    @IBOutlet weak var side2TextField: UITextField!
+    @IBOutlet weak var side3TextField: UITextField!
+    @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var resultsLabel: UILabel!
+    
+    //reference variables
+    let q = Computations();
+
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        side1TextField.delegate = self
+        side2TextField.delegate = self
+        side3TextField.delegate = self
+        submitButton.addTarget(self, action: #selector(TriangleViewController.computeTriangle), forControlEvents: UIControlEvents.TouchUpInside)
+    }
+  
+    
+     func updateUI(result: String)
+    {
+        resultsLabel.text = result
+        side1TextField.text! = ""
+        side2TextField.text! = ""
+        side3TextField.text! = ""
     }
     
-    func isTriangle(A:Int, B:Int, C:Int) -> Bool
+    
+    func computeTriangle()
     {
-        let result1 = ((A*C)+(C*B))>(A*B)
-        let result2 = ((C*B)+(A*B))>(A*C)
-        let result3 = ((A*B)+(A*C))>(C*B)
-        let isTrue = result1&&result2&&result3 ? true : false
         
-        return isTrue
+        let s1 : Int? = Int(side1TextField.text!)
+        let s2 : Int? = Int(side2TextField.text!)
+        let s3 : Int? = Int(side3TextField.text!)
+        
+        guard s1 != nil && s2 != nil && s3 != nil else{
+            updateUI("\(TextFieldError.EnterValidInput)")
+            return}
+        
+        let getResult = q.triangleWithSidesTypeIs(s1!, side2: s2!, side3: s3!)
+        
+        updateUI(getResult)
     }
     
-    func triangleWithSidesTypeIs(side1:Int, side2:Int, side3:Int) -> String
+
+    func textFieldDidBeginEditing(textField: UITextField)
     {
-        guard isTriangle(side1, B:side2, C:side3) else{
-            return "This is Not a Triangle"
-        }
-        
-        var triType = ""
-        let tempTuple = (side1,side2,side3)
-        
-        switch(tempTuple)
-        {
-            case let (s1,s2,s3) where (s1==s2) && (s2==s3): triType="Equilateral"
-            case let (s1,s2,s3) where (s1==s2) || (s1==s3): triType="Isosceles"
-            case let (s1,s2,s3) where !(s1==s2) && !(s1==s3): triType="Scalene"
-            default: triType="Error"
-
-        }
-        
-        return triType;
+        textField.becomeFirstResponder()
+    }
+    func textFieldDidEndEditing(textField: UITextField)
+    {
+        textField.resignFirstResponder()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+ 
 
 }
 

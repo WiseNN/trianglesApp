@@ -13,6 +13,7 @@
 		F3FB818C1DA4269600604C9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3FB818B1DA4269600604C9C /* Assets.xcassets */; };
 		F3FB818F1DA4269600604C9C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3FB818D1DA4269600604C9C /* LaunchScreen.storyboard */; };
 		F3FB819A1DA4269600604C9C /* TrianglesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FB81991DA4269600604C9C /* TrianglesTests.swift */; };
+		F3FB81A51DA451C300604C9C /* Computations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FB81A41DA451C300604C9C /* Computations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		F3FB81951DA4269600604C9C /* TrianglesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrianglesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3FB81991DA4269600604C9C /* TrianglesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrianglesTests.swift; sourceTree = "<group>"; };
 		F3FB819B1DA4269600604C9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F3FB81A41DA451C300604C9C /* Computations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Computations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 			children = (
 				F3FB81841DA4269600604C9C /* AppDelegate.swift */,
 				F3FB81861DA4269600604C9C /* TriangleViewController.swift */,
+				F3FB81A41DA451C300604C9C /* Computations.swift */,
 				F3FB81881DA4269600604C9C /* Main.storyboard */,
 				F3FB818B1DA4269600604C9C /* Assets.xcassets */,
 				F3FB818D1DA4269600604C9C /* LaunchScreen.storyboard */,
@@ -200,6 +203,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3FB81871DA4269600604C9C /* TriangleViewController.swift in Sources */,
+				F3FB81A51DA451C300604C9C /* Computations.swift in Sources */,
 				F3FB81851DA4269600604C9C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
