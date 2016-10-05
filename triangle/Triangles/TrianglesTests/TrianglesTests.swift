@@ -13,26 +13,31 @@ import XCTest
 class TrianglesTests: XCTestCase
 {
     //class reference variables
-    var q = TriangleViewController()
+    var q = Computations()
+    
+    //class primitves
     let s1=6,s2=10,s3=9;
     
     override func setUp()
     {
         super.setUp()
-        
-        
+
         //create new reference on each method execution
-        q = TriangleViewController()
+        q = Computations()
         
     }
     
     //Is this a triangle
     func testIsTriangle()
     {
-        let bool = q.isTriangle(s1, B: s2, C: s3)
+//        method is private, un-comment & remove private decleration to test
+//        let bool = q.isTriangle(s1, B: s2, C: s3)
         
-        XCTAssertTrue(bool, "NOT A Triangle")
+//        XCTAssertTrue(bool, "NOT A Triangle")
     }
+    
+    
+    
     //If it is what kind of triangle
     func testTriangleWithSidesTypeIs()
     {
