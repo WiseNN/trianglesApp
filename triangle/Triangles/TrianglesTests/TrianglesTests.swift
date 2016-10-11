@@ -13,37 +13,58 @@ import XCTest
 class TrianglesTests: XCTestCase
 {
     //class reference variables
-    var q = Computations()
+    var testTriangle = TriangleComputations()
     
     //class primitves
-    let s1=6,s2=10,s3=9;
+    struct sides {
+        static let typeTest = (6,1,4)
+        static let isTriangleTest = (6,1,4)
+        static let isSideATest = (6,1,4)
+        static let isSideBTest = (6,1,4)
+        static let isSideCTest = (6,1,4)
+    }
     
     override func setUp()
     {
         super.setUp()
-
-        //create new reference on each method execution
-        q = Computations()
-        
-    }
-    
-    //Is this a triangle
-    func testIsTriangle()
-    {
-//        method is private, un-comment & remove private decleration to test
-//        let bool = q.isTriangle(s1, B: s2, C: s3)
-        
-//        XCTAssertTrue(bool, "NOT A Triangle")
+        testTriangle = TriangleComputations()
     }
     
     
     
-    //If it is what kind of triangle
+    //test sides of triangle render appropriate results
     func testTriangleWithSidesTypeIs()
     {
-        let result = q.triangleWithSidesTypeIs(s1, side2:s2, side3:s3)
-        XCTAssertEqual(result, "Scalene")
+        let triType = testTriangle.triangleWithSidesTypeIs(sides.typeTest.0, side2: sides.typeTest.1, side3: sides.typeTest.2)
+        XCTAssertEqual(triType, "Isosceles")
     }
+    
+    // take all side, determin if this is a triangle
+    func testIsTriangle()
+    {
+        let isTrue = testTriangle.isTriangle(sides.isTriangleTest.0, B: sides.isTriangleTest.1, C: sides.isTriangleTest.2)
+        XCTAssert(isTrue, "Is Not A Triangle")
+    }
+    
+    //test to calculate side 1 return isTrue
+    func testIsValidTriangleSideA()
+    {
+        let isSideA = testTriangle.isValidTriangleSideA(sides.isSideATest.0, sideB1: sides.isSideATest.1, sideC1: sides.isSideATest.2)
+        XCTAssert(isSideA, "A:Is Not Valid Side")
+    }
+    //test to calculate side 2 return isTrue
+    func testIsValidTriangleSideB()
+    {
+        let isSideB = testTriangle.isValidTriangleSideB(sides.isSideBTest.0, sideB2: sides.isSideBTest.1, sideC2: sides.isSideBTest.2)
+        XCTAssert(isSideB, "B:Is Not Valid Side")
+    }
+    //test to calculate side 3 return isTrue
+    func testIsValidTriangleSideC()
+    {
+       let isSideC = testTriangle.isValidTriangleSideC(sides.isSideCTest.0, sideB3: sides.isSideCTest.1, sideC3: sides.isSideCTest.2)
+        XCTAssert(isSideC, "C:Is Not Valid Side")
+    }
+    
     
     
     
