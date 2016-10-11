@@ -8,6 +8,7 @@
 
 import UIKit
 
+//error definition for no input
 enum TextFieldError:ErrorType {
     case EnterValidInput
     
@@ -24,7 +25,7 @@ class TriangleViewController: UIViewController, UITextFieldDelegate
     @IBOutlet weak var resultsLabel: UILabel!
     
     //reference variables
-    let q = Computations();
+    let triangleVC = TriangleComputations();
 
     override func viewDidLoad()
     {
@@ -36,15 +37,16 @@ class TriangleViewController: UIViewController, UITextFieldDelegate
     }
   
     
-     func updateUI(result: String)
-    {
+    //update UI when an event happens
+    func updateUI(result: String)
+     {
         resultsLabel.text = result
         side1TextField.text! = ""
         side2TextField.text! = ""
         side3TextField.text! = ""
-    }
+     }
     
-    
+    //action method for computing triangle, calls the logic model
     func computeTriangle()
     {
         
@@ -52,20 +54,23 @@ class TriangleViewController: UIViewController, UITextFieldDelegate
         let s2 : Int? = Int(side2TextField.text!)
         let s3 : Int? = Int(side3TextField.text!)
         
-        guard s1 != nil && s2 != nil && s3 != nil else{
-            updateUI("\(TextFieldError.EnterValidInput)")
-            return}
+        guard s1 != nil && s2 != nil && s3 != nil else{ updateUI("\(TextFieldError.EnterValidInput)"); return}
         
-        let getResult = q.triangleWithSidesTypeIs(s1!, side2: s2!, side3: s3!)
+        let getResult = triangleVC.triangleWithSidesTypeIs(s1!, side2: s2!, side3: s3!)
         
         updateUI(getResult)
     }
     
 
+    //makes keyboard appear on screen, becomes responder to events
     func textFieldDidBeginEditing(textField: UITextField)
     {
         textField.becomeFirstResponder()
+        
+        if textField.text!.isEmpty
+        { resultsLabel.text = "" }
     }
+    //retract keyboard when done typing
     func textFieldDidEndEditing(textField: UITextField)
     {
         textField.resignFirstResponder()
